@@ -1,0 +1,14 @@
+C:\Users\vluka\OneDrive\Desktop\MatatuC#\bin\Debug\net8.0\MatatuC#.exe
+C:\Users\vluka\OneDrive\Desktop\MatatuC#\bin\Debug\net8.0\MatatuC#.deps.json
+C:\Users\vluka\OneDrive\Desktop\MatatuC#\bin\Debug\net8.0\MatatuC#.runtimeconfig.json
+C:\Users\vluka\OneDrive\Desktop\MatatuC#\bin\Debug\net8.0\MatatuC#.dll
+C:\Users\vluka\OneDrive\Desktop\MatatuC#\bin\Debug\net8.0\MatatuC#.pdb
+C:\Users\vluka\OneDrive\Desktop\MatatuC#\obj\Debug\net8.0\MatatuC#.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\vluka\OneDrive\Desktop\MatatuC#\obj\Debug\net8.0\MatatuC#.AssemblyInfoInputs.cache
+C:\Users\vluka\OneDrive\Desktop\MatatuC#\obj\Debug\net8.0\MatatuC#.AssemblyInfo.cs
+C:\Users\vluka\OneDrive\Desktop\MatatuC#\obj\Debug\net8.0\MatatuC#.csproj.CoreCompileInputs.cache
+C:\Users\vluka\OneDrive\Desktop\MatatuC#\obj\Debug\net8.0\MatatuC#.dll
+C:\Users\vluka\OneDrive\Desktop\MatatuC#\obj\Debug\net8.0\refint\MatatuC#.dll
+C:\Users\vluka\OneDrive\Desktop\MatatuC#\obj\Debug\net8.0\MatatuC#.pdb
+C:\Users\vluka\OneDrive\Desktop\MatatuC#\obj\Debug\net8.0\MatatuC#.genruntimeconfig.cache
+C:\Users\vluka\OneDrive\Desktop\MatatuC#\obj\Debug\net8.0\ref\MatatuC#.dll
