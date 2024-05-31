@@ -12,3 +12,4 @@ C:\Users\vluka\OneDrive\Desktop\MatatuC#\obj\Debug\net8.0\refint\MatatuC#.dll
 C:\Users\vluka\OneDrive\Desktop\MatatuC#\obj\Debug\net8.0\MatatuC#.pdb
 C:\Users\vluka\OneDrive\Desktop\MatatuC#\obj\Debug\net8.0\MatatuC#.genruntimeconfig.cache
 C:\Users\vluka\OneDrive\Desktop\MatatuC#\obj\Debug\net8.0\ref\MatatuC#.dll
+C:\Users\vluka\OneDrive\Desktop\MatatuC#\obj\Debug\net8.0\MatatuC#.sourcelink.json
