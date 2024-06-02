@@ -1,32 +1,55 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 
 namespace MatatuCSharp{
-    class Program{
+    public class Program{
         static void Main(string[] args){
-            Random rand = new Random();
 
-            int num = rand.Next(1,53);
 
-            Card myCard = new Card(Suit.Club , Value.Ace);
+           // string myValue = Console.ReadLine();
+           /*
+            //MENU
 
-            Console.WriteLine(myCard);
+            Console.WriteLine("Welcome to Matatu!!\n");
+            Console.Write("Press (1) to start game.\nPress (Enter) to exit.");
+            string play = Console.ReadLine();
+            if(play == "1"){
+                Console.WriteLine("It's working!");
+            } else {
+                Console.WriteLine("Bye!");
+            }
+            */
             
+            int[] cards = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
+            shuffleTest(cards);
+            foreach(int val in cards){
+                Console.Write(val);
+            }
+/*
+            try
+            {
+                Value result = (Value)Int32.Parse(myValue);
 
-            Console.WriteLine(Planets.Earth + " is a planet. This is planet number " + (int)Planets.Earth);
+                Card myCard = new Card(Suit.Clubs , result);
+                Console.WriteLine(myCard);
+            }
+            catch (FormatException)
+            {
+               Console.WriteLine($"Unable to parse '{myValue}'");
+            }
 
+            */
         }
 
-        enum Planets{
-            Mercury = 1,
-            Venus = 2,
-            Earth = 3,
-            Mars = 4,
-            Jupiter = 5,
-            Saturn = 6,
-            Uranus = 7,
-            Neptune = 8,
-            Pluto = 9
+        static public void shuffleTest(int[] cards){
+            Random rand = new Random();
+            for(int i = cards.Length - 1; i > 0; --i){
+                int randIdx = rand.Next(1, i + 1);
+                int temp = cards[i];
+                cards[i] = cards[randIdx];
+                cards[randIdx] = temp;
+            } 
         }
     }
 }
