@@ -7,7 +7,7 @@ namespace MatatuCSharp{
 
 
            // string myValue = Console.ReadLine();
-           /*
+           
             //MENU
 
             Console.WriteLine("Welcome to Matatu!!\n");
@@ -18,14 +18,7 @@ namespace MatatuCSharp{
             } else {
                 Console.WriteLine("Bye!");
             }
-            */
             
-            int[] cards = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-
-            shuffleTest(cards);
-            foreach(int val in cards){
-                Console.Write(val);
-            }
 /*
             try
             {
@@ -40,16 +33,6 @@ namespace MatatuCSharp{
             }
 
             */
-        }
-
-        static public void shuffleTest(int[] cards){
-            Random rand = new Random();
-            for(int i = cards.Length - 1; i > 0; --i){
-                int randIdx = rand.Next(1, i + 1);
-                int temp = cards[i];
-                cards[i] = cards[randIdx];
-                cards[randIdx] = temp;
-            } 
         }
     }
 }
