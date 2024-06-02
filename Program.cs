@@ -9,6 +9,7 @@ namespace MatatuCSharp{
            // string myValue = Console.ReadLine();
            
             //MENU
+            bool startGame = true;
 
             Console.WriteLine("Welcome to Matatu!!\n");
             Console.Write("Press (1) to start game.\nPress (Enter) to exit.");
@@ -17,23 +18,22 @@ namespace MatatuCSharp{
                 Console.WriteLine("It's working!");
             } else {
                 Console.WriteLine("Bye!");
-            }
-            
-/*
-            try
-            {
-                Value result = (Value)Int32.Parse(myValue);
-
-                Card myCard = new Card(Suit.Clubs , result);
-                Console.WriteLine(myCard);
-            }
-            catch (FormatException)
-            {
-               Console.WriteLine($"Unable to parse '{myValue}'");
+                startGame = false;
             }
 
-            */
+            if(startGame){
+                Console.WriteLine("Shuffling Deck!\n");
+                Console.WriteLine("Please pick 4 cards! (P)");
+                
+            }
+
+
+
+
+
         }
+
+        
     }
 }
 

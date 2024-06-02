@@ -2,18 +2,18 @@ using System;
 
 namespace MatatuCSharp
 {
-    class Card{
-        public Suit Suit { get; }
-        public Value Value { get; }
-
-        public Card(Suit suit, Value val){
+    public class Card{
+        public string Suit;
+        public string Value;
+        
+        public Card(string suit, string value){
             Suit = suit;
-            Value = val;
+            Value = value;
         }
 
-        public override string ToString()
-        {
+        public override string ToString(){
             return $"{Value} of {Suit}";
+
         }
     }
 
