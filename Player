@@ -4,11 +4,15 @@ namespace MatatuCSharp
 {
     public class Player{
         public List<Card> cardsInHand;
+        private List<Card> deckOfCards;
+        
+        public Player(Deck myDeck){
+            deckOfCards = myDeck.Cards;
+            cardsInHand = new List<Card>();
 
-
-
-        public Player(){
-            
+            for(int i = 0; i < 4; i++){
+                cardsInHand.Add(drawCard());
+            }
 
         }
 
@@ -16,15 +20,24 @@ namespace MatatuCSharp
 
         }
 
-        public Card drawCard(){ //method to pick a card
+        public Card drawCard(){ 
+            if(deckOfCards.Count == 0){
+                throw new InvalidOperationException("No cards left!");
+            } else {
+                cardsInHand drawnCard = deckOfCards[0];
+                deckOfCards.RemoveAt(0);
+                return drawnCard;
+            }
+
 
             return null;
 
         }
 
-        public Card[] seeHand(){//method to see all the cards in your hand
-
-            return null;
+        public List<Card> SeeCards{
+            get{
+                return cardsInHand;
+            }
         }
 
     }

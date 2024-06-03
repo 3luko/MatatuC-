@@ -29,6 +29,7 @@ namespace MatatuCSharp{
                 
                     if(playerPick == "P" || playerPick == "p"){ //if the player presses p it will pick 4 cards and 
                         playerPicked = true;
+                        
                     } 
                 }
                 
