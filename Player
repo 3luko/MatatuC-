@@ -1,0 +1,28 @@
+using System;
+
+namespace MatatuCSharp
+{
+    public class Player{
+        public Cards[] cardsInHand;
+
+        public Player(){
+
+        }
+
+        public void playCard(){ //method to play a card
+
+        }
+
+        public Card drawCard(){ //method to pick a card
+
+            return null;
+
+        }
+
+        public Card[] seeHand(){//method to see all the cards in your hand
+
+            return null;
+        }
+
+    }
+}

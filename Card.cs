@@ -3,16 +3,23 @@ using System;
 namespace MatatuCSharp
 {
     public class Card{
-        public string Suit;
-        public string Value;
+        private Suit suit;
+        private Value value;
         
-        public Card(string suit, string value){
-            Suit = suit;
-            Value = value;
+        public Card(Suit suit1, Value value1){
+            suit = suit1;
+            value = value1;
         }
 
+        public Suit CardSuit{
+            get { return suit;}
+        }
+
+        public Value CardValue{
+            get{return value;}
+        }
         public override string ToString(){
-            return $"{Value} of {Suit}";
+            return $"{value} of {suit}";
 
         }
     }
