@@ -5,19 +5,29 @@ namespace MatatuCSharp
     public class Card{
         private Suit suit;
         private Value value;
+
+        //Constructor method that has parameters for
+        //the Suit and the Value of a card
         
         public Card(Suit suit1, Value value1){
             suit = suit1;
             value = value1;
         }
 
+        //getter method for the Suit
+
         public Suit CardSuit{
             get { return suit;}
         }
 
+        //getter method for the value
+
         public Value CardValue{
             get{return value;}
         }
+
+        //overrriden ToString method to display
+        //the name of a specific card.
         public override string ToString(){
             return $"{value} of {suit}";
 
