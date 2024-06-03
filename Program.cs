@@ -7,6 +7,7 @@ namespace MatatuCSharp{
             //MENU
             bool startGame = true;
             bool playerPicked = false;
+            
 
             Console.WriteLine("Welcome to Matatu!!\n");
             Console.Write("Press (1) to start game.\nPress (Enter) to exit.");
@@ -17,8 +18,10 @@ namespace MatatuCSharp{
                 Console.WriteLine("Bye!");
                 startGame = false;
             }
-            int count = 0;
+            
             Deck myDeck = new Deck();
+            myDeck.shuffleDeck();
+            Player player = null;
             if(startGame){
 
                 //player has to pick 4 cards from deck
@@ -29,7 +32,13 @@ namespace MatatuCSharp{
                 
                     if(playerPick == "P" || playerPick == "p"){ //if the player presses p it will pick 4 cards and 
                         playerPicked = true;
-                        
+                        player = new Player(myDeck);
+                        Console.WriteLine("Showing Hand...\n");
+                        foreach (Card card in player.SeeCards)
+                        {
+                            Console.WriteLine(card);
+                            
+                        }
                     } 
                 }
                 

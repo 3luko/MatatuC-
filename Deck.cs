@@ -19,7 +19,7 @@ namespace MatatuCSharp{
                 return cards;
             }
         }
-        static public void shuffleDeck(List<Card> cards){  //method for shuffling
+        public void shuffleDeck(){  //method for shuffling
             Random rand = new Random();
             
             for(int i = cards.Count - 1; i > 0; --i){

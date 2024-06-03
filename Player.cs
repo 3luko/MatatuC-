@@ -3,8 +3,10 @@ using System;
 namespace MatatuCSharp
 {
     public class Player{
-        public List<Card> cardsInHand;
+        private List<Card> cardsInHand;
         private List<Card> deckOfCards;
+
+        private List<Card> wastedDeck;
         
         public Player(Deck myDeck){
             deckOfCards = myDeck.Cards;
@@ -16,6 +18,7 @@ namespace MatatuCSharp
 
         }
 
+
         public void playCard(){ //method to play a card
 
         }
@@ -24,14 +27,10 @@ namespace MatatuCSharp
             if(deckOfCards.Count == 0){
                 throw new InvalidOperationException("No cards left!");
             } else {
-                cardsInHand drawnCard = deckOfCards[0];
+                Card drawnCard = deckOfCards[0];
                 deckOfCards.RemoveAt(0);
                 return drawnCard;
             }
-
-
-            return null;
-
         }
 
         public List<Card> SeeCards{
