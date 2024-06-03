@@ -5,6 +5,7 @@ namespace MatatuCSharp{
 
     public class Deck{
         private List<Card> cards; //using a list to better manipulate the deck of cards
+       
 
         //Constructor method that initializes each 
         //card in the deck, it is initially in a

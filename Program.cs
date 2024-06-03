@@ -22,6 +22,7 @@ namespace MatatuCSharp{
             Deck myDeck = new Deck();
             myDeck.shuffleDeck();
             Player player = null;
+            Player computer = null;
             if(startGame){
 
                 //player has to pick 4 cards from deck
@@ -33,10 +34,13 @@ namespace MatatuCSharp{
                     if(playerPick == "P" || playerPick == "p"){ //if the player presses p it will pick 4 cards and 
                         playerPicked = true;
                         player = new Player(myDeck);
+                        computer = new Player(myDeck);
                         Console.WriteLine("Showing Hand...\n");
+                        int count = 1;
                         foreach (Card card in player.SeeCards)
                         {
-                            Console.WriteLine(card);
+                            Console.WriteLine(card + " (" + count + ")" );
+                            count++;
                             
                         }
                     } else if (playerPick == "S" || playerPick == "s"){ // ends the game
@@ -47,27 +51,35 @@ namespace MatatuCSharp{
                 }
                 bool played = false;
 
-                while(player.cardInHandAmount() > 0){
-                    Console.WriteLine("\nPlease PLAY a card (1-" + player.cardInHandAmount() + ") or (H) to SHOW HAND or (S) to STOP");
+                while(player.cardInHandAmount() > 0 && computer.cardInHandAmount() > 0){
+                    Console.WriteLine("\nPlease PLAY a card (1-" + player.cardInHandAmount() + "), (H) to SHOW HAND, (P) to pick a card, or (S) to STOP");
                     string playerCard = Console.ReadLine();
                     if(playerCard == "S" || playerCard == "s"){ //if the input is an S it will terminate the game
                         Console.WriteLine("Thanks for playing!");
                         break;
                     } else if(playerCard == "H" || playerCard == "h"){ //if the user input is an H it will show what is currently in your hand
                         Console.WriteLine("Showing Hand...\n");
+                        int count = 1;
                         foreach (Card card in player.SeeCards)
                         {
-                            Console.WriteLine(card);
+                            Console.WriteLine(card + " (" + count + ")" );
+                            count++;
                             
                         }
-                    } else { //if the user inserts a number it will check if the number is valid and play that card
+                    } else if(playerCard == "P" || playerCard == "p"){
+
+
+                    } else  { //if the user inserts a number it will check if the number is valid and play that card
                         int card2Play = int.Parse(playerCard);
                         if(card2Play > player.cardInHandAmount() || card2Play < 1){
                             Console.WriteLine("Please put a valid card number");
                             continue;
                         }
                         player.playCard(card2Play);
-                        Console.WriteLine("Top of waste deck:\n" + player.TopWastedDeck);
+                        Console.WriteLine("You played:\n" + Player.TopWastedDeck);
+                        Console.WriteLine("\nThe Computer played:");
+                        computer.playCard(1);
+                        Console.WriteLine(Player.TopWastedDeck);
                     }
                 }    
             }

@@ -4,9 +4,9 @@ namespace MatatuCSharp
 {
     public class Player{
         private List<Card> cardsInHand;
-        private List<Card> deckOfCards;
+        private static List<Card> deckOfCards;
 
-        private List<Card> wastedDeck;
+        private static List<Card> wastedDeck;
         
         public Player(Deck myDeck){
             deckOfCards = myDeck.Cards;
@@ -58,7 +58,7 @@ namespace MatatuCSharp
             }
         }
 
-        public Card TopWastedDeck{ //method to see the top of the waste deck
+        public static Card TopWastedDeck{ //method to see the top of the waste deck
             get{
                 if(wastedDeck.Count == 0){
                     throw new InvalidOperationException("No cards in wasted deck! Please play a card");
