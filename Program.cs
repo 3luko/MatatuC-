@@ -12,15 +12,17 @@ namespace MatatuCSharp{
             Console.Write("Press (1) to start game.\nPress (Enter) to exit.");
             string play = Console.ReadLine();
             if(play == "1"){
-                Console.WriteLine("It's working!");
+                Console.WriteLine("Shuffling deck...\n");
             } else {
                 Console.WriteLine("Bye!");
                 startGame = false;
             }
-
+            int count = 0;
+            Deck myDeck = new Deck();
             if(startGame){
-                Console.WriteLine("Shuffling Deck...");
+
                 //player has to pick 4 cards from deck
+                
                 while(!playerPicked){ //while playerPicked is equal to false it will continue the loop
                     Console.WriteLine("Please pick 4 cards! (P)");
                     string playerPick = Console.ReadLine();
@@ -29,6 +31,7 @@ namespace MatatuCSharp{
                         playerPicked = true;
                     } 
                 }
+                
                 
                 
 

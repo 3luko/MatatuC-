@@ -34,15 +34,16 @@ namespace MatatuCSharp
         Seven = 7,
         Eight = 8,
         Nine = 9,
-        Jack = 10,
-        Queen = 11,
-        King = 12
+        Ten = 10,
+        Jack = 11,
+        Queen = 12,
+        King = 13
     }
 
     public enum Suit {
-        Hearts,
-        Spades,
-        Diamonds,
-        Clubs
+        Hearts = 0,
+        Spades = 1,
+        Diamonds = 2,
+        Clubs = 3
     }
 }

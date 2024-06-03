@@ -3,9 +3,12 @@ using System;
 namespace MatatuCSharp
 {
     public class Player{
-        public Cards[] cardsInHand;
+        public List<Card> cardsInHand;
+
+
 
         public Player(){
+            
 
         }
 
