@@ -43,5 +43,9 @@ namespace MatatuCSharp{
                 cards[randIdx] = temp;
             } 
         }
+
+        public int deckNum(){
+            return cards.Count;
+        }
     }
 }

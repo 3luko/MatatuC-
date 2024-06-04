@@ -14,7 +14,7 @@ namespace MatatuCSharp
             cardsInHand = new List<Card>();
 
             for(int i = 0; i < 4; i++){
-                cardsInHand.Add(drawCard());
+                drawCard();
             }
 
         }
@@ -44,6 +44,7 @@ namespace MatatuCSharp
             } else {
                 Card drawnCard = deckOfCards[0];
                 deckOfCards.RemoveAt(0);
+                cardsInHand.Add(drawnCard);
                 return drawnCard;
             }
         }
@@ -56,6 +57,11 @@ namespace MatatuCSharp
             get{
                 return cardsInHand;
             }
+        }
+
+        public Card chooseCard(int card){
+            Card myCard = cardsInHand[card];
+            return myCard;
         }
 
         public static Card TopWastedDeck{ //method to see the top of the waste deck
