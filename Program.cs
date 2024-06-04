@@ -42,7 +42,7 @@ namespace MatatuCSharp{
                             count++;
                             
                         }
-                        //Console.WriteLine(myDeck.deckNum()); //debugging
+                        
                     } else if (playerPick == "S" || playerPick == "s"){ // ends the game
                         startGame = false;
                         playerPicked = true;
@@ -69,7 +69,7 @@ namespace MatatuCSharp{
                             count++;
                             
                         }
-                        Console.WriteLine("Top of Deck: " + Player.TopWastedDeck);
+                        Console.WriteLine("\nTop of Deck: " + Player.TopWastedDeck);
                     } else if(playerCard == "P" || playerCard == "p"){
                         Card yourPick = player.drawCard();
                         Console.WriteLine($"You picked a {yourPick} from the deck");
@@ -84,15 +84,14 @@ namespace MatatuCSharp{
                         }
                         player.playCard(card2Play);
                         Console.WriteLine("You played:\n" + Player.TopWastedDeck);
-                        //Console.WriteLine("\nThe Computer played:");
+                        
                         if(Logic.computerChoice(Player.TopWastedDeck, computer)){
                             Console.WriteLine("\nThe Computer played: " + Player.TopWastedDeck);
                         } else {
                             Console.WriteLine("\nThe Computer Drew a card. The top of the deck is still: \n" + Player.TopWastedDeck);
                         }
-                        //Console.WriteLine(Player.TopWastedDeck);
+                        
                     }
-                    //Console.WriteLine(myDeck.deckNum()); //debugging
                     Console.WriteLine("\n******************************************");
                 }  
                 if(!stop){

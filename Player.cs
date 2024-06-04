@@ -13,10 +13,9 @@ namespace MatatuCSharp
             wastedDeck = new List<Card>();
             cardsInHand = new List<Card>();
 
-            for(int i = 0; i < 4; i++){
+            for(int i = 0; i < 7; i++){
                 drawCard();
             }
-
         }
         //method to play a card into the waste pile
 
@@ -63,6 +62,8 @@ namespace MatatuCSharp
             Card myCard = cardsInHand[card];
             return myCard;
         }
+        //static method to see the top of the waste deck. 
+        //both the player and the computer can interact with it
 
         public static Card TopWastedDeck{ //method to see the top of the waste deck
             get{
