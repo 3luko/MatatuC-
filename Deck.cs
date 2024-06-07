@@ -34,10 +34,5 @@ namespace MatatuCSharp{
                 cards[randIdx] = temp;
             } 
         }
-        //for debugging.
-        //checks how many cards are in the deck
-        public int deckNum(){
-            return cards.Count;
-        }
     }
 }

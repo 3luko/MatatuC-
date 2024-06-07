@@ -17,7 +17,7 @@ namespace MatatuCSharp{
                 Console.WriteLine("Bye!");
                 startGame = false;
             }
-            
+
             Deck myDeck = new Deck();
             myDeck.shuffleDeck();
             Player player = null;
@@ -27,7 +27,7 @@ namespace MatatuCSharp{
                 //player has to pick 4 cards from deck
                 
                 while(!playerPicked){ //while playerPicked is equal to false it will continue the loop
-                    Console.WriteLine("Please PICK 4 cards! (P) or (S) to END GAME");
+                    Console.WriteLine("Please select (P) to automatically pick 7 cards. Select (S) to end game.");
                     string playerPick = Console.ReadLine();
                 
                     if(playerPick == "P" || playerPick == "p"){ //if the player presses p it will pick 4 cards and 
@@ -42,7 +42,7 @@ namespace MatatuCSharp{
                             count++;
                             
                         }
-                        
+                        Player.firstCard(myDeck);
                     } else if (playerPick == "S" || playerPick == "s"){ // ends the game
                         startGame = false;
                         playerPicked = true;
@@ -50,7 +50,7 @@ namespace MatatuCSharp{
                     }
                 }
                 Console.WriteLine("******************************************");
-                bool played = false;
+                
                 bool stop = false;
 
                 while(player.cardInHandAmount() > 0 && computer.cardInHandAmount() > 0){
@@ -65,52 +65,50 @@ namespace MatatuCSharp{
                         int count = 1;
                         foreach (Card card in player.SeeCards)
                         {
-                            Console.WriteLine(card + " (" + count + ")" );
+
+                            Console.WriteLine(" (" + count + ")" + card);
                             count++;
                             
                         }
                         Console.WriteLine("\nTop of Deck: " + Player.TopWastedDeck);
                     } else if(playerCard == "P" || playerCard == "p"){
+
                         Card yourPick = player.drawCard();
                         Console.WriteLine($"You picked a {yourPick} from the deck");
                         Console.WriteLine("\nThe Computer played:");
                         computer.playCard(1);
                         Console.WriteLine(Player.TopWastedDeck);
+
                     } else  { //if the user inserts a number it will check if the number is valid and play that card
                         int card2Play = int.Parse(playerCard);
                         if(card2Play > player.cardInHandAmount() || card2Play < 1){
                             Console.WriteLine("Please put a valid card number");
                             continue;
                         }
+                        if(!Logic.canYouPlay(player.chooseCard(card2Play), Player.TopWastedDeck)){
+                            Console.WriteLine("You can't place that, you must put either a " + Player.TopWastedDeck.CardSuit + " Suit or a value of " + Player.TopWastedDeck.CardValue);
+                            Console.WriteLine(player.chooseCard(card2Play));
+                            continue;
+                        }
                         player.playCard(card2Play);
                         Console.WriteLine("You played:\n" + Player.TopWastedDeck);
-                        
+
                         if(Logic.computerChoice(Player.TopWastedDeck, computer)){
                             Console.WriteLine("\nThe Computer played: " + Player.TopWastedDeck);
                         } else {
                             Console.WriteLine("\nThe Computer Drew a card. The top of the deck is still: \n" + Player.TopWastedDeck);
                         }
-                        
                     }
                     Console.WriteLine("\n******************************************");
                 }  
                 if(!stop){
                     if(player.cardInHandAmount() < 1){
                         Console.WriteLine("You Won! You have no more cards left!");
-                    
                     }  else {
                         Console.WriteLine("The Computer Won!");
                     }
-
-                }
-                
-                
+                }            
             }
-
-
-        }
-
-        
+        }   
     }
 }
-

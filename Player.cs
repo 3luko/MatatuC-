@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.ExceptionServices;
 
 namespace MatatuCSharp
 {
@@ -12,7 +13,6 @@ namespace MatatuCSharp
             deckOfCards = myDeck.Cards;
             wastedDeck = new List<Card>();
             cardsInHand = new List<Card>();
-
             for(int i = 0; i < 7; i++){
                 drawCard();
             }
@@ -59,6 +59,7 @@ namespace MatatuCSharp
         }
 
         public Card chooseCard(int card){
+            card -= 1;
             Card myCard = cardsInHand[card];
             return myCard;
         }
@@ -74,5 +75,24 @@ namespace MatatuCSharp
             }
         }
 
+        //places the first card into the waste deck
+        //makes sure that the first card of the deck
+        //doesn't have a value of 7 (7 of whatever card
+        //is on the top of the deck will end the game).
+
+        public static void firstCard(Deck myDeck){
+            int idx = 0;
+            Card firstCard = null;
+            foreach(Card card in deckOfCards){
+                if(card.CardValue != Value.Seven){
+                    firstCard = deckOfCards[idx];
+                    break;
+                }
+                idx++;
+            }
+            deckOfCards.RemoveAt(idx);
+            wastedDeck.Add(firstCard);
+            Console.WriteLine("\nFirst Card in deck is: " + Player.TopWastedDeck);
+        }
     }
 }

@@ -32,6 +32,18 @@ namespace MatatuCSharp
             return $"{value} of {suit}";
 
         }
+
+        //overriden method from the Object class
+        //checks if a card (if card is passed within the parameters)
+        //is equal to whatever card desired.
+
+        public override bool Equals(object obj)
+        {
+            if(obj is Card otherCard){
+                return this.suit == otherCard.suit && this.value == otherCard.value;
+            }
+            return false;
+        }
     }
 
     public enum Value{

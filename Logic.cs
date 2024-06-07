@@ -28,5 +28,13 @@ namespace MatatuCSharp
                 return false;
             }
         }
+
+        public static bool canYouPlay(Card yourCard, Card topcard){
+            if(yourCard.CardSuit == topcard.CardSuit || yourCard.CardValue == topcard.CardValue){
+                return true;
+            } else {
+                return false;
+            }  
+        }
     }
 }
