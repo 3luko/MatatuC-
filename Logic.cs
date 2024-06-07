@@ -29,12 +29,23 @@ namespace MatatuCSharp
             }
         }
 
+        //method to check if a card is valid to play
+        //returns a bool variable
+
         public static bool canYouPlay(Card yourCard, Card topcard){
             if(yourCard.CardSuit == topcard.CardSuit || yourCard.CardValue == topcard.CardValue){
                 return true;
             } else {
                 return false;
             }  
+        }
+
+        public static bool jack_and_eight(Card topCard){
+            if(topCard.CardValue == Value.Eight || topCard.CardValue == Value.Jack){
+                return true;
+            } else {
+                return false;
+            }   
         }
     }
 }
