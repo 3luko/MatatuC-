@@ -40,6 +40,10 @@ namespace MatatuCSharp
             }  
         }
 
+        //method to check if the card at the top is an
+        //eight or a jack. If it is the player that is next
+        //(Computer your user) will be skipped.
+
         public static bool jack_and_eight(Card topCard){
             if(topCard.CardValue == Value.Eight || topCard.CardValue == Value.Jack){
                 return true;
@@ -47,5 +51,30 @@ namespace MatatuCSharp
                 return false;
             }   
         }
+
+        //method that checks if the value placed 
+        //at the top of the waste deck is a two
+        //then it will automatically make you play 
+        //two cards
+        public static bool value_two(Card topCard, Player player){
+            if(topCard.CardValue == Value.Two){
+                player.drawCard();
+                player.drawCard();
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+
+        //methed that checks if the value at the top
+        //of the waste deck is an ace.
+
+        public static bool value_ACE(Card topCard){
+
+            return false;
+        }
+
+        
     }
 }
