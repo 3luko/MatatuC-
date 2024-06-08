@@ -120,7 +120,7 @@ namespace MatatuCSharp{
                         }
                     } else{
                         Card computerCard = computer.chooseCard(computer.cardInHandAmount());
-                        if(Logic.canYouPlay(computerCard, Player.TopWastedDeck)){
+                        if(Logic.canYouPlay(computerCard, Player.TopWastedDeck)){ //checks if the computer can play the picked card
                             computer.playCard(computer.cardInHandAmount());
                             Console.WriteLine("The Computer picked and played a: " + Player.TopWastedDeck);
                         }else {
