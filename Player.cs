@@ -13,7 +13,7 @@ namespace MatatuCSharp
             deckOfCards = myDeck.Cards;
             wastedDeck = new List<Card>();
             cardsInHand = new List<Card>();
-            for(int i = 0; i < 7; i++){
+            for(int i = 0; i < 4; i++){
                 drawCard();
             }
         }
@@ -92,7 +92,6 @@ namespace MatatuCSharp
             }
             deckOfCards.RemoveAt(idx);
             wastedDeck.Add(firstCard);
-            Console.WriteLine("\nFirst Card in deck is: " + Player.TopWastedDeck);
         }
     }
 }
