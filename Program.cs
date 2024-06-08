@@ -7,6 +7,7 @@ namespace MatatuCSharp{
             //MENU
             bool startGame = true;
             bool playerPicked = false;
+            bool stop = false;
             bool is_Eight_Jack = false;
             int count = 0;
             string userChoice;
@@ -47,7 +48,7 @@ namespace MatatuCSharp{
                 }
                 
                 
-                bool stop = false;
+                
 
                 while(player.cardInHandAmount() > 0 && computer.cardInHandAmount() > 0){
                     Console.WriteLine("\n******************************************");

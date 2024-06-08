@@ -58,6 +58,10 @@ namespace MatatuCSharp
             }
         }
 
+        //static method to show a players cards
+        //and also displays which button to select
+        //to play that card
+
         public static void showCards(Player player){
             int count = 1;
             Console.WriteLine("\nShowing Hand: ");
