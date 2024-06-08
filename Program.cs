@@ -37,14 +37,7 @@ namespace MatatuCSharp{
                         playerPicked = true;
                         player = new Player(myDeck);
                         computer = new Player(myDeck);
-                        Console.WriteLine("Showing Hand...\n");
-                        count = 1;
-                        foreach (Card card in player.SeeCards)
-                        {
-                            Console.WriteLine(card + " (" + count + ")" );
-                            count++;
-                            
-                        }
+                        Player.showCards(player);
                         Player.firstCard(myDeck);
                     } else if (playerPick == "S" || playerPick == "s"){ // ends the game
                         startGame = false;
@@ -52,11 +45,12 @@ namespace MatatuCSharp{
                         Console.WriteLine("Thanks for playing!");
                     }
                 }
-                Console.WriteLine("******************************************");
+                
                 
                 bool stop = false;
 
                 while(player.cardInHandAmount() > 0 && computer.cardInHandAmount() > 0){
+                    Console.WriteLine("\n******************************************");
                     
                     if(!is_Eight_Jack){ //if they put an eight or jack it will skip the users turn
                         Console.WriteLine("\nTop of Deck: " + Player.TopWastedDeck);
@@ -71,10 +65,18 @@ namespace MatatuCSharp{
                             Card yourPick = player.drawCard();
                             Console.WriteLine($"You picked a {yourPick} from the deck");
                             if(Logic.canYouPlay(yourPick, Player.TopWastedDeck)){ //if the card that was picked is playable it will
-                                Console.WriteLine("This card is playable would you like to play?");
+                                Console.WriteLine("This card is playable would you like to play? (Select [y] for yes, or any other key for no.)");
                                 userChoice = Console.ReadLine();
                                 if(userChoice == "y" || userChoice == "Y"){
                                     player.playCard(player.cardInHandAmount());
+                                    if(Logic.jack_and_eight(Player.TopWastedDeck)){ //still checks if value placed was an 8 or Jack
+                                        Console.WriteLine("The computer has been skipped!");
+                                        Player.showCards(player);
+                                        continue;
+                                    } else if(Logic.two_Value(computer)){ //checks if the computer played a value of 2
+                                        Console.WriteLine("The computer drew 2 cards");
+                                        Player.showCards(player);
+                                    }
                                     Console.WriteLine("You played: " + Player.TopWastedDeck);
                                 } else {
                                     Console.WriteLine("You decided to keep the card. Interesting...");
@@ -84,25 +86,21 @@ namespace MatatuCSharp{
                             int card2Play = int.Parse(playerCard);
                             if(card2Play > player.cardInHandAmount() || card2Play < 1){ //if the user inputs a card that isn't valid it will continue the loop asking them to play again.
                                 Console.WriteLine("Please put a valid card number");
-                                Console.WriteLine("\n******************************************");
                                 continue;
                             }
                             if(!Logic.canYouPlay(player.chooseCard(card2Play), Player.TopWastedDeck)){ //if that card doesn't follow the rules of the game it will make you play again until it does
                                 Console.WriteLine("You can't place that, you must put either a " + Player.TopWastedDeck.CardSuit + " Suit or a value of " + Player.TopWastedDeck.CardValue);
-                                Console.WriteLine("\n******************************************");
                                 continue;
                             }
                             player.playCard(card2Play);
-                            Console.WriteLine("You played: " + Player.TopWastedDeck);
+                            Console.WriteLine("You played a(n) " + Player.TopWastedDeck);
                             if(Logic.jack_and_eight(Player.TopWastedDeck)){
                                 Console.WriteLine("The computer has been skipped!");
-                                Console.WriteLine("\nShowing Hand: ");
-                                count = 1;
-                                foreach (Card card in player.SeeCards)
-                                {
-                                    Console.WriteLine("(" + count + ") " + card);
-                                    count++;  
-                                }
+                                Player.showCards(player);
+                                continue;
+                            } else if(Logic.two_Value(computer)){ //checks if the computer played a value of 2
+                                Console.WriteLine("The computer drew 2 cards");
+                                Player.showCards(player);
                                 continue;
                             }
                         }
@@ -117,30 +115,24 @@ namespace MatatuCSharp{
                         if(Logic.jack_and_eight(Player.TopWastedDeck)){
                             is_Eight_Jack = true;
                             Console.WriteLine("You have been skipped");   
+                        } else if(Logic.two_Value(player)){ //checks if the computer played a value of 2
+                            is_Eight_Jack = true;
+                            Console.WriteLine("You must draw 2 cards :(");
                         }
                     } else{
                         Card computerCard = computer.chooseCard(computer.cardInHandAmount());
                         if(Logic.canYouPlay(computerCard, Player.TopWastedDeck)){ //checks if the computer can play the picked card
                             computer.playCard(computer.cardInHandAmount());
-                            Console.WriteLine("The Computer picked and played a: " + Player.TopWastedDeck);
+                            Console.WriteLine("The Computer picked and played a(n) " + Player.TopWastedDeck);
                         }else {
                             Console.WriteLine("\nThe Computer Drew a card. The top of the deck is still: \n" + Player.TopWastedDeck);
                         }
                     }
-
-                    Console.WriteLine("\nShowing Hand: ");
-                    count = 1;
-                    foreach (Card card in player.SeeCards)
-                    {
-                        Console.WriteLine("(" + count + ") " + card);
-                        count++;  
-                    }
-
-                    Console.WriteLine("\n******************************************");
+                    Player.showCards(player);
                 }  
                 if(!stop){
                     if(player.cardInHandAmount() < 1){
-                        Console.WriteLine("You Won! You have no more cards left!");
+                        Console.WriteLine("You Won! You have no more cards left!  :)");
                     }  else {
                         Console.WriteLine("The Computer Won!");
                     }

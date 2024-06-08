@@ -56,8 +56,8 @@ namespace MatatuCSharp
         //at the top of the waste deck is a two
         //then it will automatically make you play 
         //two cards
-        public static bool value_two(Card topCard, Player player){
-            if(topCard.CardValue == Value.Two){
+        public static bool two_Value(Player player){
+            if(Player.TopWastedDeck.CardValue == Value.Two){
                 player.drawCard();
                 player.drawCard();
                 return true;

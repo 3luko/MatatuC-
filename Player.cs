@@ -58,6 +58,16 @@ namespace MatatuCSharp
             }
         }
 
+        public static void showCards(Player player){
+            int count = 1;
+            Console.WriteLine("\nShowing Hand: ");
+            foreach (Card card in player.SeeCards)
+            {
+                Console.WriteLine("(" + count + ") " + card);
+                count++;  
+            }
+        }
+
         public Card chooseCard(int card){
             card -= 1;
             Card myCard = cardsInHand[card];
