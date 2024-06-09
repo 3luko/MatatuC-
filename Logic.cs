@@ -1,4 +1,6 @@
 using System;
+using System.Diagnostics.Contracts;
+using System.Runtime.InteropServices;
 
 namespace MatatuCSharp
 {
@@ -7,6 +9,7 @@ namespace MatatuCSharp
             bool suit = false;
             bool value = false;
             int idx = 0;
+            
             foreach(Card card in computer.SeeCards){
                 if(card.CardSuit == topCard.CardSuit){
                     suit = true;
@@ -29,15 +32,103 @@ namespace MatatuCSharp
             }
         }
 
+        public static bool computerChoiceACE(Player computer, String suit){
+            bool suits = false;
+            int idx = 0;
+
+            if(suit == "h" || suit == "H"){//if the string inputed is an h meaning they want hearts
+                foreach (Card card in computer.SeeCards)//checks each card in the computers deck
+                {
+                    if(card.CardSuit == Suit.Hearts){ //if it finds the card it will break loop
+                        suits = true;
+                        idx++;
+                        break;
+                    }
+                    idx++;
+                }
+                if(suits){ //it will play that card and return true;
+                    computer.playCard(idx);
+                    return true;
+                } else { //if suits is false it will just draw a card
+                    computer.drawCard();
+                    return false;
+                }
+
+            } else if(suit == "c" || suit == "C"){ //does the same for if it is a club
+                foreach (Card card in computer.SeeCards)
+                {
+                    if(card.CardSuit == Suit.Clubs){
+                        suits = true;
+                        idx++;
+                        break;
+                    }
+                    idx++;
+                }
+                if(suits){
+                    computer.playCard(idx);
+                    return true;
+                } else {
+                    computer.drawCard();
+                    return false;
+                }
+
+            } else if(suit == "s" || suit == "S"){ //if the suit is a spade
+                foreach (Card card in computer.SeeCards)
+                {
+                    if(card.CardSuit == Suit.Spades){
+                        suits = true;
+                        idx++;
+                        break;
+                    }
+                    idx++;
+                }
+                if(suits){
+                    computer.playCard(idx);
+                    return true;
+                } else {
+                    computer.drawCard();
+                    return false;
+                }
+
+            } else if(suit == "d" || suit == "D"){ //if the suit is a diamond
+                foreach (Card card in computer.SeeCards)
+                {
+                    if(card.CardSuit == Suit.Diamonds){
+                        suits = true;
+                        idx++;
+                        break;
+                    }
+                    idx++;
+                }
+                if(suits){
+                    computer.playCard(idx);
+                    return true;
+                } else {
+                    computer.drawCard();
+                    return false;
+                }
+
+            } else {
+                Console.WriteLine("Invalid suit entered. The computer will play as the Ace's Suit.");
+                return false;
+            }
+        }
+
+
+
         //method to check if a card is valid to play
         //returns a bool variable
 
         public static bool canYouPlay(Card yourCard, Card topcard){
-            if(yourCard.CardSuit == topcard.CardSuit || yourCard.CardValue == topcard.CardValue){
+            if(yourCard.CardSuit == topcard.CardSuit || yourCard.CardValue == topcard.CardValue || yourCard.CardValue == Value.Ace){
                 return true;
             } else {
                 return false;
             }  
+        }
+
+        public static bool playAce(Card yourCard, string suit){
+           return false;
         }
 
         //method to check if the card at the top is an
@@ -69,9 +160,13 @@ namespace MatatuCSharp
 
         //methed that checks if the value at the top
         //of the waste deck is an ace.
+        //if it is an ace it will allow any suit to 
+        //be placed.
 
-        public static bool value_ACE(Card topCard){
-
+        public static bool ace_Value(){
+            if(Player.TopWastedDeck.CardValue == Value.Ace){
+                return true;
+            }
             return false;
         }
 
