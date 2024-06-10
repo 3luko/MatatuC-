@@ -94,7 +94,7 @@ namespace MatatuCSharp
         //doesn't have a value of 7 (7 of whatever card
         //is on the top of the deck will end the game).
 
-        public static void firstCard(Deck myDeck){
+        public static Card firstCard(Deck myDeck){
             int idx = 0;
             Card firstCard = null;
             foreach(Card card in deckOfCards){
@@ -106,6 +106,8 @@ namespace MatatuCSharp
             }
             deckOfCards.RemoveAt(idx);
             wastedDeck.Add(firstCard);
+
+            return firstCard;
         }
     }
 }

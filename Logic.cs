@@ -32,6 +32,10 @@ namespace MatatuCSharp
             }
         }
 
+        //method that makes sure the computer plays whatever card
+        //that you chose in as the suit after playing an ace
+        //it automatically checks it's deck and 
+
         public static bool computerChoiceACE(Player computer, String suit){
             bool suits = false;
             int idx = 0;
@@ -127,8 +131,37 @@ namespace MatatuCSharp
             }  
         }
 
+        //method to allow the player to play whatever suit 
+        //they want and if the computer can't play they
+        //will have to play that card.
+
         public static bool playAce(Card yourCard, string suit){
-           return false;
+            if(suit == "Hearts"){
+                if(yourCard.CardSuit == Suit.Hearts){
+                    return true;
+                } else {
+                    return false;
+                }
+            } else if(suit == "Spades"){
+                if(yourCard.CardSuit == Suit.Spades){
+                    return true;
+                } else {
+                    return false;
+                }
+            } else if(suit == "Clubs"){
+                if(yourCard.CardSuit == Suit.Clubs){
+                    return true;
+                } else {
+                    return false;
+                }
+            } else if(suit == "Diamonds"){
+                if(yourCard.CardSuit == Suit.Diamonds){
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+            return false;
         }
 
         //method to check if the card at the top is an
@@ -168,6 +201,16 @@ namespace MatatuCSharp
                 return true;
             }
             return false;
+        }
+
+        //method that checks if the value at the top wasted deck is a seven.
+
+        public static bool firstSevenCard(){
+            if(Player.TopWastedDeck.CardValue == Value.Seven){
+                return true;
+            } else {
+                return false;
+            }
         }
 
         

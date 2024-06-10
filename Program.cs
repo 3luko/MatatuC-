@@ -11,11 +11,11 @@ namespace MatatuCSharp{
             bool is_Eight_Jack = false;
             bool is_Ace = false;
             bool playAceCard = false;
-            int count = 0;
             string userChoice;
             string suit = "";
             string suit2 = "";
-            Card topCard = null;
+            Card firstCard = null;
+ 
             
             Console.WriteLine("Welcome to Matatu!!\n");
             Console.Write("Press (1) to START GAME OR (Enter) to EXIT.");
@@ -44,13 +44,14 @@ namespace MatatuCSharp{
                         player = new Player(myDeck);
                         computer = new Player(myDeck);
                         Player.showCards(player);
-                        Player.firstCard(myDeck);
+                        firstCard = Player.firstCard(myDeck);
                     } else if (playerPick == "S" || playerPick == "s"){ // ends the game
                         startGame = false;
                         playerPicked = true;
                         Console.WriteLine("Thanks for playing!");
                     }
-                }
+                }    
+            }
                 
                 
                 
@@ -94,15 +95,15 @@ namespace MatatuCSharp{
                                 Console.WriteLine("Please put a valid card number");
                                 continue;
                             }
-                            //NEED TO FINISH. 
-                            //IF COMPUTER DECIDES TO DRAW
-                            //YOU MUST STILL PLAY THE SUIT
-                            //THAT YOU DECIDED FROM THE 
-                            //PREVIOUS ACE.
-                            if(!playAceCard){
-
-                            }
-                            if(!Logic.canYouPlay(player.chooseCard(card2Play), Player.TopWastedDeck)){ //if that card doesn't follow the rules of the game it will make you play again until it does
+                            if(is_Ace){
+                                if(!Logic.playAce(player.chooseCard(card2Play), suit2)){
+                                    Console.WriteLine("You can't place that, you must put a " + suit2 + " card");
+                                    Player.showCards(player);
+                                    continue;
+                                } else {
+                                    is_Ace = false;
+                                }
+                            } else if(!Logic.canYouPlay(player.chooseCard(card2Play), Player.TopWastedDeck)){ //if that card doesn't follow the rules of the game it will make you play again until it does
                                 Console.WriteLine("You can't place that, you must put either a " + Player.TopWastedDeck.CardSuit + " Suit or a value of " + Player.TopWastedDeck.CardValue);
                                 continue;
                             } 
@@ -110,7 +111,7 @@ namespace MatatuCSharp{
                             Console.WriteLine("You played a(n) " + Player.TopWastedDeck);
                             if(Logic.ace_Value()){ //checking if the value at the top of the deck is an Ace value
                                 is_Ace = true;
-                                topCard = Player.TopWastedDeck;
+                                //topCard = Player.TopWastedDeck;
                                 while(suit != "h" && suit != "c" && suit != "s" && suit != "d"){
                                     Console.WriteLine("What suit would you like? (H) for Heart, (C) for Clubs, (S) Spades, and (D) Diamonds");
                                     suit = Console.ReadLine().ToLower();
@@ -145,6 +146,7 @@ namespace MatatuCSharp{
                         if(Logic.computerChoiceACE(computer, suit)){
                             Console.WriteLine("\nThe Computer played: " + Player.TopWastedDeck);
                             Console.WriteLine("The computer has " + computer.cardInHandAmount() + " left in hand");
+                            is_Ace = false;
                             if (Logic.jack_and_eight(Player.TopWastedDeck)){
                                 is_Eight_Jack = true;
                                 Console.WriteLine("You have been skipped");  
@@ -156,8 +158,8 @@ namespace MatatuCSharp{
                             }
                         } else { 
                             Console.WriteLine("\nThe Computer Drew a card. The top of the deck is still: \n" + Player.TopWastedDeck);
+                            Console.WriteLine("You must play a " + suit2 + " card.");
                         }
-                        is_Ace = false;
                     } else if(Logic.computerChoice(Player.TopWastedDeck, computer)){ //makes the computer play a card or draw a card based on their in hand, and what's on top of the deck
                         Console.WriteLine("\nThe Computer played: " + Player.TopWastedDeck);
                         Console.WriteLine("The computer has " + computer.cardInHandAmount() + " left in hand");
@@ -189,4 +191,3 @@ namespace MatatuCSharp{
             }
         }   
     }
-}
