@@ -203,10 +203,11 @@ namespace MatatuCSharp
             return false;
         }
 
-        //method that checks if the value at the top wasted deck is a seven.
+        //method that checks if the value at the top wasted deck is a seven
+        //but of the same suit as the card at the top of the deck.
 
-        public static bool firstSevenCard(){
-            if(Player.TopWastedDeck.CardValue == Value.Seven){
+        public static bool seven_Val(Card firstCard){
+            if(Player.TopWastedDeck.CardValue == Value.Seven && Player.TopWastedDeck.CardSuit == firstCard.CardSuit){
                 return true;
             } else {
                 return false;
