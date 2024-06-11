@@ -214,6 +214,87 @@ namespace MatatuCSharp
             }
         }
 
+        public static void results(Player player, Player computer){
+            int playerTotal = 0;
+            int compTotal = 0;
+            foreach(Card card in player.SeeCards){
+                if(card.CardSuit == Suit.Spades && card.CardValue == Value.Ace){
+                    playerTotal += 30;
+                } else if(card.CardValue == Value.Ace){
+                    playerTotal += 1;
+                } else if(card.CardValue == Value.Two){
+                    playerTotal += 2;
+                } else if(card.CardValue == Value.Three){
+                    playerTotal += 3;
+                } else if(card.CardValue == Value.Four){
+                    playerTotal += 4;
+                } else if(card.CardValue == Value.Five){
+                    playerTotal += 5;
+                } else if(card.CardValue == Value.Six){
+                    playerTotal += 6;
+                } else if(card.CardValue == Value.Seven){
+                    playerTotal += 7;
+                } else if(card.CardValue == Value.Eight){
+                    playerTotal += 8;
+                } else if(card.CardValue == Value.Nine){
+                    playerTotal += 9;
+                } else if(card.CardValue == Value.Ten){
+                    playerTotal += 10;
+                } else if(card.CardValue == Value.Jack){
+                    playerTotal += 11;
+                } else if(card.CardValue == Value.Queen){
+                    playerTotal += 12;
+                } else if(card.CardValue == Value.King){
+                    playerTotal += 13;
+                }
+            }
+
+            foreach(Card card in computer.SeeCards){
+                if(card.CardSuit == Suit.Spades && card.CardValue == Value.Ace){
+                    compTotal += 30;
+                } else if(card.CardValue == Value.Ace){
+                    compTotal += 1;
+                } else if(card.CardValue == Value.Two){
+                    compTotal += 2;
+                } else if(card.CardValue == Value.Three){
+                    compTotal += 3;
+                } else if(card.CardValue == Value.Four){
+                    compTotal += 4;
+                } else if(card.CardValue == Value.Five){
+                    compTotal += 5;
+                } else if(card.CardValue == Value.Six){
+                    compTotal += 6;
+                } else if(card.CardValue == Value.Seven){
+                    compTotal += 7;
+                } else if(card.CardValue == Value.Eight){
+                    compTotal += 8;
+                } else if(card.CardValue == Value.Nine){
+                    compTotal += 9;
+                } else if(card.CardValue == Value.Ten){
+                    compTotal += 10;
+                } else if(card.CardValue == Value.Jack){
+                    compTotal += 11;
+                } else if(card.CardValue == Value.Queen){
+                    compTotal += 12;
+                } else if(card.CardValue == Value.King){
+                    compTotal += 13;
+                } 
+            }
+            Console.WriteLine("*******************************************");
+            Console.WriteLine("Showing Scores:");
+            Console.WriteLine("Player\t\t\tComputer");
+            Console.WriteLine(playerTotal + "\t\t\t" + compTotal);
+            if(playerTotal < compTotal){
+                Console.WriteLine("\nCongratulations! You Won!");
+            } else if(playerTotal == compTotal){
+                Console.WriteLine("\nYou Tied!");
+            } else {
+                Console.WriteLine("\nSorry! You Lost :(");
+            }
+
+
+        }
+
         
     }
 }

@@ -10,6 +10,7 @@ namespace MatatuCSharp{
             bool stop = false;
             bool is_Eight_Jack = false;
             bool is_Ace = false;
+            bool gameEnded = false;
             bool playAceCard = false;
             string userChoice;
             string suit = "";
@@ -50,7 +51,7 @@ namespace MatatuCSharp{
                         playerPicked = true;
                         Console.WriteLine("Thanks for playing!");
                     }
-                }    
+                }              
             }
             while(player.cardInHandAmount() > 0 && computer.cardInHandAmount() > 0){
                 Console.WriteLine("\n******************************************");
@@ -92,6 +93,7 @@ namespace MatatuCSharp{
                         }
                         if(Logic.seven_Val(firstCard)){
                             Console.WriteLine("You ended the game!");
+                            gameEnded = true;
                             break;
                         }
                         if(is_Ace){
@@ -178,8 +180,10 @@ namespace MatatuCSharp{
                     }
                 }
                 Player.showCards(player);
-            }  
-            if(!stop){
+            } 
+            if(gameEnded){
+                Logic.results(player, computer);
+            } else if(!stop){
                 if(player.cardInHandAmount()  < 1){
                     Console.WriteLine("You Won! You have no more cards left!  :)");
                 } else {
