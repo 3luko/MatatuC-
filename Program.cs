@@ -96,7 +96,7 @@ namespace MatatuCSharp{
                             gameEnded = true;
                             break;
                         }
-                        if(is_Ace){
+                        if(is_Ace){ //checking if the top card ia an ace they can't pick any card other than that same suit value
                             if(!Logic.playAce(player.chooseCard(card2Play), suit2)){
                                 Console.WriteLine("You can't place that, you must put a " + suit2 + " card");
                                 Player.showCards(player);
@@ -108,7 +108,7 @@ namespace MatatuCSharp{
                             Console.WriteLine("You can't place that, you must put either a " + Player.TopWastedDeck.CardSuit + " Suit or a value of " + Player.TopWastedDeck.CardValue);
                             continue;
                         } 
-                        player.playCard(card2Play);
+                        player.playCard(card2Play); //actually cplaying a card
                         Console.WriteLine("You played a(n) " + Player.TopWastedDeck);
                         if(Logic.ace_Value()){ //checking if the value at the top of the deck is an Ace value
                             is_Ace = true; 
@@ -142,12 +142,16 @@ namespace MatatuCSharp{
                     break;
                 }
                 is_Eight_Jack = false;
-                if(is_Ace){
+                if(is_Ace){ //if the top of the deck is an ace the computer must play accordingly
                     if(Logic.computerChoiceACE(computer, suit)){
                         Console.WriteLine("\nThe Computer played: " + Player.TopWastedDeck);
                         Console.WriteLine("The computer has " + computer.cardInHandAmount() + " left in hand");
                         is_Ace = false;
-                        if (Logic.jack_and_eight(Player.TopWastedDeck)){
+                        if(Logic.seven_Val(firstCard)){
+                            Console.WriteLine("The Computer ended the game!");
+                            gameEnded = true;
+                            break;
+                        } else if (Logic.jack_and_eight(Player.TopWastedDeck)){
                             is_Eight_Jack = true;
                             Console.WriteLine("You have been skipped");  
                         } else if(Logic.two_Value(player)){
@@ -163,14 +167,24 @@ namespace MatatuCSharp{
                 } else if(Logic.computerChoice(Player.TopWastedDeck, computer)){ //makes the computer play a card or draw a card based on their in hand, and what's on top of the deck
                     Console.WriteLine("\nThe Computer played: " + Player.TopWastedDeck);
                     Console.WriteLine("The computer has " + computer.cardInHandAmount() + " left in hand");
-                    if(Logic.jack_and_eight(Player.TopWastedDeck)){
+                    if(Logic.ace_Value()){ //if the computer plays an ace
+                        string compSuit = Logic.compSuitChoice(computer);
+                        Console.WriteLine("The Computer chose a " + compSuit + ".");
+                        suit2 = compSuit;
+                        is_Ace = true;
+                        continue;
+                    } else if(Logic.seven_Val(firstCard)){ //if the computer plays a seven
+                        Console.WriteLine("The Computer ended the game!");
+                        gameEnded = true;
+                        break;
+                    } else if(Logic.jack_and_eight(Player.TopWastedDeck)){ //if the computer plays an eight or a Jack
                         is_Eight_Jack = true;
                         Console.WriteLine("You have been skipped");   
                     } else if(Logic.two_Value(player)){ //checks if the computer played a value of 2
                         is_Eight_Jack = true;
                         Console.WriteLine("You must draw 2 cards :(");
                     } 
-                } else{
+                } else{ //the computer is picking a card from the deck 
                     Card computerCard = computer.chooseCard(computer.cardInHandAmount());
                     if(Logic.canYouPlay(computerCard, Player.TopWastedDeck)){ //checks if the computer can play the picked card
                         computer.playCard(computer.cardInHandAmount());
@@ -184,7 +198,7 @@ namespace MatatuCSharp{
             if(gameEnded){
                 Logic.results(player, computer);
             } else if(!stop){
-                if(player.cardInHandAmount()  < 1){
+                if(player.cardInHandAmount() < 1){
                     Console.WriteLine("You Won! You have no more cards left!  :)");
                 } else {
                     Console.WriteLine("The Computer Won! :(");

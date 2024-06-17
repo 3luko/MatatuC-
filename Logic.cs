@@ -1,10 +1,53 @@
 using System;
 using System.Diagnostics.Contracts;
+using System.Linq.Expressions;
+using System.Reflection;
 using System.Runtime.InteropServices;
 
 namespace MatatuCSharp
 {
     public class Logic{
+
+
+        //method to make the computer choose a suit if they
+        //play an Ace value. The computer will check their 
+        //own hand and see which card will be suitable 
+        //for them to win the game.
+        public static string compSuitChoice(Player computer){
+            if(!Logic.ace_Value()){
+                return "No Ace value";
+            }
+            string compSuit = "";
+            //initialize a dictionary where each suit is the key and the value is the amount of cards 
+            var suitCounts = new Dictionary<Suit, int>{
+                {Suit.Hearts, 0},
+                {Suit.Spades, 0},
+                {Suit.Clubs, 0},
+                {Suit.Diamonds,0}
+            };
+
+            foreach(Card card in computer.SeeCards){
+                suitCounts[card.CardSuit]++;
+            }
+            //using the Aggregate method to determine which suit has the highest counts
+            Suit chosenSuit = suitCounts.Aggregate((l, r) => l.Value > r.Value ? l : r).Key; 
+
+            if(chosenSuit == Suit.Hearts){
+                compSuit = "Hearts";
+            } else if(chosenSuit == Suit.Spades){
+                compSuit = "Spades";
+            } else if(chosenSuit == Suit.Clubs){
+                compSuit = "Clubs";
+            } else if(chosenSuit == Suit.Diamonds){
+                compSuit = "Diamonds";
+            }
+
+            return compSuit;
+        }
+        //methdo to make the computer pick a card in
+        //their deck to play. Returns True if they
+        //can play, and plays that card. Returns False 
+        //if they can't play and draws a card
         public static bool computerChoice(Card topCard, Player computer){
             bool suit = false;
             bool value = false;
@@ -136,7 +179,9 @@ namespace MatatuCSharp
         //will have to play that card.
 
         public static bool playAce(Card yourCard, string suit){
-            if(suit == "Hearts"){
+            if(yourCard.CardValue == Value.Ace){
+                return true;
+            } else if(suit == "Hearts"){
                 if(yourCard.CardSuit == Suit.Hearts){
                     return true;
                 } else {
@@ -291,10 +336,6 @@ namespace MatatuCSharp
             } else {
                 Console.WriteLine("\nSorry! You Lost :(");
             }
-
-
-        }
-
-        
+        } 
     }
 }
