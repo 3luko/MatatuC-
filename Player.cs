@@ -106,7 +106,6 @@ namespace MatatuCSharp
             }
             deckOfCards.RemoveAt(idx);
             wastedDeck.Add(firstCard);
-
             return firstCard;
         }
     }

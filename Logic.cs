@@ -136,7 +136,7 @@ namespace MatatuCSharp
                     computer.drawCard();
                     return false;
                 }
-
+                
             } else if(suit == "d" || suit == "D"){ //if the suit is a diamond
                 foreach (Card card in computer.SeeCards)
                 {
