@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\vluka\\onedrive\\desktop\\matatuc#\\MatatuC#.csproj": {}
+    "C:\\Users\\vluka\\OneDrive\\Desktop\\MatatuC#\\MatatuC#.csproj": {}
   },
   "projects": {
-    "C:\\Users\\vluka\\onedrive\\desktop\\matatuc#\\MatatuC#.csproj": {
+    "C:\\Users\\vluka\\OneDrive\\Desktop\\MatatuC#\\MatatuC#.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\vluka\\onedrive\\desktop\\matatuc#\\MatatuC#.csproj",
+        "projectUniqueName": "C:\\Users\\vluka\\OneDrive\\Desktop\\MatatuC#\\MatatuC#.csproj",
         "projectName": "MatatuC#",
-        "projectPath": "C:\\Users\\vluka\\onedrive\\desktop\\matatuc#\\MatatuC#.csproj",
+        "projectPath": "C:\\Users\\vluka\\OneDrive\\Desktop\\MatatuC#\\MatatuC#.csproj",
         "packagesPath": "C:\\Users\\vluka\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\vluka\\onedrive\\desktop\\matatuc#\\obj\\",
+        "outputPath": "C:\\Users\\vluka\\OneDrive\\Desktop\\MatatuC#\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\vluka\\AppData\\Roaming\\NuGet\\NuGet.Config"
