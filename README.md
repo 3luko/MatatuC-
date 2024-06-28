@@ -1,8 +1,4 @@
-The provided code is a complete implementation of a Matatu game in C#. The main logic resides in the `Program` class, which handles the game flow, player interactions, and checks for game-ending conditions. The `Logic` class contains methods to handle game rules, computer player strategies, and scoring. The `Player` class manages the player's hand of cards and interactions with the deck.
-
-![UML Diagram](https://github.com/3luko/MatatuCSharp/blob/main/images/MatatuC%23(UNO)%20UML.drawio%20(1).png)
-
-
+The provided code is a complete implementation of a Matatu game in C#. The main logic resides in the `Program` class, which handles the game flow, player interactions, and checks for game-ending conditions. The `Logic` class contains methods to handle game rules, computer player strategies, and scoring. The `Player` class manages the player's hand of cards and interactions with the deck. (UML Diagram at the bottom of the page)
 
 ### Key Components
 
@@ -44,3 +40,6 @@ The provided code is a complete implementation of a Matatu game in C#. The main 
    - Implement a more sophisticated AI for the computer player.
    - Add a graphical user interface (GUI) for a better user experience.
    - Include additional game features or variations.
+
+### UML Diagram
+![UML Diagram](https://github.com/3luko/MatatuCSharp/blob/main/images/MatatuC%23(UNO)%20UML.drawio%20(1).png)
